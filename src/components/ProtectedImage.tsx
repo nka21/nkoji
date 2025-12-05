@@ -1,3 +1,5 @@
+"use client";
+
 import Image, { type ImageProps } from 'next/image';
 
 interface ProtectedImageProps extends Omit<ImageProps, 'draggable'> {}
@@ -8,10 +10,10 @@ export function ProtectedImage({ className, ...props }: ProtectedImageProps) {
   };
 
   return (
-    <div className="relative inline-block">
+    <div className={`relative overflow-hidden ${className || ''}`}>
       <Image 
         {...props}
-        className={`block select-none [-webkit-touch-callout:none] ${className || ''}`}
+        className="block select-none [-webkit-touch-callout:none]"
         draggable={false}
       />
       <button
