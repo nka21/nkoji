@@ -47,6 +47,10 @@
   opacity: 0;
 }
 
+.animation-delay-text {
+  animation-delay: 0.3s;
+}
+
 .animation-delay-300 {
   animation-delay: 0.8s;
 }
