@@ -1,0 +1,26 @@
+import Image, { type ImageProps } from 'next/image';
+
+interface ProtectedImageProps extends Omit<ImageProps, 'draggable'> {}
+
+export function ProtectedImage({ className, ...props }: ProtectedImageProps) {
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div className="relative inline-block">
+      <Image 
+        {...props}
+        className={`block select-none [-webkit-touch-callout:none] ${className || ''}`}
+        draggable={false}
+      />
+      <button
+        type="button"
+        className="absolute inset-0 z-10 cursor-default"
+        onContextMenu={handleContextMenu}
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+    </div>
+  );
+}
